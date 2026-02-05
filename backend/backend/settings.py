@@ -157,6 +157,7 @@ cloudinary.config(
     secure=True
 )
 
+ALLOWED_HOSTS = ['*']
 
 
 DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
