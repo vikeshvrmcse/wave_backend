@@ -1,0 +1,7 @@
+backend/.env
+venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/db.sqlite3

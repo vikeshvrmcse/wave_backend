@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: my-drf-app
+    env: python
+    region: oregon         # change if needed
+    branch: main
+    plan: free
+    buildCommand: ./build.sh
+    startCommand: gunicorn backend.wsgi:application
+    # envVars:
+    #   - key: SECRET_KEY
+    #     fromDatabase: false
+    #     value: 'your-secret-key'
+    #   - key: DEBUG
+    #     fromDatabase: false
+    #     value: 'False'
+    #   - key: TIDB_NAME
+    #     fromDatabase: false
+    #     value: 'your_tidb_db_name'
+    #   - key: TIDB_USER
+    #     fromDatabase: false
+    #     value: 'your_tidb_username'
+    #   - key: TIDB_PASSWORD
+    #     fromDatabase: false
+    #     value: 'your_tidb_password'
+    #   - key: TIDB_HOST
+    #     fromDatabase: false
+    #     value: 'your_tidb_host'
+    #   - key: TIDB_PORT
+    #     fromDatabase: false
+    #     value: '4000'
+    #   - key: CLOUDINARY_CLOUD_NAME
+    #     fromDatabase: false
+    #     value: 'your-cloud-name'
+    #   - key: CLOUDINARY_API_KEY
+    #     fromDatabase: false
+    #     value: 'your-api-key'
+    #   - key: CLOUDINARY_API_SECRET
+    #     fromDatabase: false
+    #     value: 'your-api-secret'
