@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from .views import home_page
 urlpatterns = [
-    path('admin/', admin.site.urls),path('worker-api/', include('user.urls'))
+    path('wave-backend/admin/', admin.site.urls),
+    path('',home_page),
+    path('wave-backend/', include('user.urls'))
 ]
