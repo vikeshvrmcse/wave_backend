@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import UserModel, VideoModel
+from .models import UserModel, VideoModel, PostModel
 
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -46,6 +46,10 @@ class VideoSerializer(serializers.ModelSerializer):
             'video_file',
         ]
 
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=PostModel
+        fields = '__all__'
     
 
 

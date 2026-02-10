@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import UserModel, VideoModel
+from .models import UserModel, VideoModel, PostModel
 from .utils import generate_otp, send_otp_email, otp_expiry_time, get_tokens_for_user
 # Create your views here.
 
@@ -11,7 +11,7 @@ from django.utils import timezone
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import permissions
 from rest_framework.parsers import MultiPartParser, FormParser
-from .serializers import (RegisterSerializer, OTPVerifySerializer, LoginSerializer, ResendOTPSerializer, UserSerializer, VideoSerializer)
+from .serializers import (RegisterSerializer, OTPVerifySerializer, LoginSerializer, ResendOTPSerializer, UserSerializer, VideoSerializer, PostSerializer)
 
 class RegisterAPIView(APIView):
     queryset=UserModel.objects.all()
@@ -164,3 +164,7 @@ class VideoViewSet(viewsets.ViewSet):
             video.delete()
             return Response({"message":"Video Deletion successfull"}, status=status.HTTP_200_OK)
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset=PostModel.objects.all()
+    serializer_class=PostSerializer

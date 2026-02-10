@@ -27,7 +27,9 @@ class UserModel(models.Model):
 
     def is_otp_valid(self, otp):
         return (self.otp==otp and self.otp_expiry_time and timezone.now()<=self.otp_expiry_time)
-    
+
+    def __str__(self):
+        return self.user_name
             
     
 
@@ -35,12 +37,7 @@ class UserModel(models.Model):
 class VideoModel(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    user = models.ForeignKey(
-        UserModel,
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True
-    )
+    user = models.ForeignKey(UserModel,on_delete=models.CASCADE,null=True,blank=True)
     video_title = models.CharField(max_length=100)
     video_description = models.TextField()
     video_banner = CloudinaryField('user_video_banner',resource_type='image', null=True, blank=True)
@@ -48,4 +45,16 @@ class VideoModel(models.Model):
     video_upload_datetime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.user.user_name
+        return self.video_title
+
+
+
+class PostModel(models.Model):
+    user=models.ForeignKey(UserModel, on_delete=models.CASCADE, null=True, blank=True)
+    post_title=models.CharField(max_length=255)
+    post_description=models.TextField()
+    post_images=CloudinaryField('user_post_images', resource_type='image', null=True, blank=True)
+    post_created_datetime=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.post_title

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
     'user',
+    'meta_features'
 ]
 
 MIDDLEWARE = [

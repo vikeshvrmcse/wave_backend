@@ -7,12 +7,14 @@ from .views import (
     ResendOTPAPIView,
     VideoViewSet,
     # ProfileImageUploadAPIView,
-    GetAllUserAPIViewSet
+    GetAllUserAPIViewSet,
+    PostViewSet
 )
 
 router = DefaultRouter()
 router.register(r'users', GetAllUserAPIViewSet, basename='users')
 router.register(r'videos', VideoViewSet, basename='videos')
+router.register(r'posts', PostViewSet, basename='posts')
 urlpatterns = [
     # AUTH APIs
     path('register/', RegisterAPIView.as_view()),

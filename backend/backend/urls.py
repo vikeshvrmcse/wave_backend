@@ -20,5 +20,6 @@ from .views import home_page
 urlpatterns = [
     path('wave-backend/admin/', admin.site.urls),
     path('',home_page),
-    path('wave-backend/', include('user.urls'))
+    path('wave-backend/', include('user.urls')),
+    path('wave-backend/', include('meta_features.urls'))
 ]
